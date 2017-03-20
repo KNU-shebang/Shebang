@@ -86,7 +86,7 @@ class Room(models.Model):
     room_type = models.CharField(max_length=20,
                                 choices=TYPE_OF_ROOM, default=u"원룸")
     rent = models.PositiveIntegerField() # 월세
-    deposit = models.BooleanField(default=False) # 보증금 유무
+    deposit = models.PositiveIntegerField(default=0) # 보증금
     start_date = models.DateField() # 이어살기 시작 날짜
     end_date = models.DateField() # 이어살기 종료 날짜
 
