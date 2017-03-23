@@ -109,3 +109,6 @@ MEDIA_URL = '/media/'
 MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
 
 
+# for Form DateField
+DATA_INPUT_FORMATS = ('%Y/%m/%d', '%Y-%m-%d')
+

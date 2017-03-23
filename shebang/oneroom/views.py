@@ -42,6 +42,7 @@ def room_edit(request, pk):
         form = RoomForm(request.POST, instance=room)
         if form.is_valid():
             room = form.save(commit=False)
+            room.user = request.user.id
             room.save()
             return redirect('oneroom:room', pk=room.pk)
 
@@ -56,6 +57,7 @@ def comment_new(request, pk):
         if form.is_valid():
             comment = form.save(commit=False)
             comment.room = Room.objects.get(pk=pk)
+            comment.user = request.user.id
             comment.save()
             return redirect('oneroom:room', pk)
 

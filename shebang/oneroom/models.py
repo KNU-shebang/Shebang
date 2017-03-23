@@ -13,7 +13,7 @@ from django.utils.translation import ugettext_lazy as _
 from django.contrib.auth.models import AbstractBaseUser, PermissionsMixin
 from django.contrib.auth.models import BaseUserManager
 
-from oneroom.choices import *
+from oneroom.choices import TYPE_OF_ROOM
 
 class CustomUserManager(BaseUserManager):
     """
@@ -79,6 +79,7 @@ class User(AbstractBaseUser, PermissionsMixin):
 
 class Room(models.Model):
     title = models.CharField(max_length=120)
+    user = models.OneToOneField(User, on_delete=models.CASCADE) 
     content = models.TextField() # 추가정보
     created_date = models.DateTimeField(auto_now_add=True)
     updated_date = models.DateTimeField(auto_now=True)
