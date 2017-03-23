@@ -1,0 +1,16 @@
+{% extends "base.html" %}
+
+{% block title %}홈{% endblock %}
+
+<input onclick="location.href='{% url "oneroom:room_new" %}'" type="submit" value="글쓰기">
+
+{% block content %}
+
+<ul>
+{% for room in object_list %}
+  <li>room.title - room.user.email</li>
+
+{% endfor %}
+</ul>
+
+{% endblock %}

@@ -26,7 +26,7 @@ class RoomForm(forms.ModelForm):
 
     class Meta:
         model = Room
-        field = ['title', 'content', 'location', 'room_type', 'rent',
+        fields = ['title', 'content', 'location', 'room_type', 'rent',
                 'deposit', 'start_date', 'end_date']
 
 
@@ -36,5 +36,5 @@ class CommentNew(forms.ModelForm):
 
     class Meta:
         model= Comment
-        field = ['content']
+        fields = ['content']
 

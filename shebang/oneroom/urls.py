@@ -1,5 +1,5 @@
 from django.conf.urls import url
-from wiki import views
+from oneroom import views
 
 urlpatterns = [
     # oneroom index 
@@ -10,7 +10,7 @@ urlpatterns = [
         name='room'),
     
     # 방 신규 생성
-    url(r'^room/new/$', views.room_new, neme='room_new'),
+    url(r'^room/new/$', views.room_new, name='room_new'),
 
     # 방 정보 수정
     url(r'^room/(?P<pk>\d+)/$', views.room_edit, name='room_edit'),
