@@ -8,7 +8,7 @@
 
 <ul>
 {% for room in object_list %}
-  <li>room.title - room.user.email</li>
+<li><a href="{% url 'oneroom:room' room.pk %}">{{ room.title }}</a> - {{ room.user.email }}</li>
 
 {% endfor %}
 </ul>

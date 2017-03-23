@@ -57,7 +57,7 @@ def comment_new(request, pk):
         if form.is_valid():
             comment = form.save(commit=False)
             comment.room = Room.objects.get(pk=pk)
-            comment.user = request.user.id
+            comment.user = request.user
             comment.save()
             return redirect('oneroom:room', pk)
 

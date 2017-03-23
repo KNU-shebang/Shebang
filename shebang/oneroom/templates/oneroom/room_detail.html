@@ -4,20 +4,20 @@
 
 {% block content %}
 
-object.content
-object.create_date
-object.location
-object.room_type
-object.rent
-object.deposit
-object.start_date
-object.end_date
+{{ object.content }} <br/>
+{{ object.create_date }} <br/>
+{{ object.location }}<br/>
+{{ object.room_type }}<br/>
+{{ object.rent }}<br/>
+{{ object.deposit }}<br/>
+{{ object.start_date }}<br/>
+{{ object.end_date }}<br/>
 
 {% for comment in object.comment_set.all %}
 <p>{{ comment.content }} - {{ comment.user }}</p>
 {% endfor %}
 
-<form action="{% url'oneroom:comment_new' object.pk %}" method="POST">
+<form action="{% url 'oneroom:comment_new' object.pk %}" method="POST">
   {% csrf_token %}
   {{ form }}
   <input type="submit" value="작성">
