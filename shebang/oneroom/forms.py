@@ -6,6 +6,8 @@ from django.conf import settings
 from oneroom.choices import TYPE_OF_ROOM
 from oneroom.models import Room, Comment
 
+
+
 class RoomForm(forms.ModelForm):
     title =forms.CharField(widget=forms.TextInput(attrs={'size':100}),
             label='댓글 입력')
