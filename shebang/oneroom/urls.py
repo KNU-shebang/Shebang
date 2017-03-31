@@ -18,5 +18,6 @@ urlpatterns = [
     # 댓글 달기
     url(r'^room/(?P<pk>\d+)/comment/new/$', views.comment_new, 
         name='comment_new'),
+    
 ]
 

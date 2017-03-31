@@ -4,7 +4,6 @@ from django.views.generic import ListView, DetailView
 from oneroom.models import Room
 from oneroom.forms import RoomForm, CommentNew
 
-
 class IndexView(ListView):
     """oneroom app index"""
     template_name = 'oneroom/index.html'
