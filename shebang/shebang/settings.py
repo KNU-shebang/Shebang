@@ -16,7 +16,7 @@ import os
 BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 
 
-AUTH_USER_MODEL = 'oneroom.User'
+AUTH_USER_MODEL = 'account.User'
 
 # Quick-start development settings - unsuitable for production
 # See https://docs.djangoproject.com/en/1.8/howto/deployment/checklist/
@@ -28,7 +28,12 @@ SECRET_KEY = '8bcnc=i8ccy#nj@v0@_=)y$)dg$%*#zj%@2y@l4l5xq=ucrm%5'
 DEBUG = True
 
 ALLOWED_HOSTS = []
-
+EMAIL_USE_TLS = True
+EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
+EMAIL_HOST = 'smtp.gmail.com'
+EMAIL_HOST_USER = 'basicdatakr@gmail.com'
+EMAIL_HOST_PASSWORD = 'kheom4031'
+EMAIL_PORT = 587
 
 # Application definition
 
@@ -40,6 +45,7 @@ INSTALLED_APPS = (
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'oneroom',
+    'account'
 )
 
 MIDDLEWARE_CLASSES = (
