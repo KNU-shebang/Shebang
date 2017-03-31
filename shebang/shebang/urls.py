@@ -12,6 +12,9 @@ urlpatterns = [
     
     # oneroom app 
     url(r'^oneroom/', include('oneroom.urls', namespace='oneroom')),
+
+    # user app
+    url(r'^account/', include('account.urls', namespace='account')),
      
     # admin
     url(r'^admin/', include(admin.site.urls)),
