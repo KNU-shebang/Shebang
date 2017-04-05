@@ -1,6 +1,6 @@
 *.pyc
 db.sqlite3
-__pycache__
-shebang_env
-migrations
+__pycache__/
+shebang_env/
+migrations/
 
