@@ -3,4 +3,5 @@ db.sqlite3
 __pycache__/
 shebang_env/
 migrations/
+geckodriver.log
 
