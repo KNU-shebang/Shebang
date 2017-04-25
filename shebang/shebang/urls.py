@@ -18,6 +18,9 @@ urlpatterns = [
      
     # admin
     url(r'^admin/', include(admin.site.urls)),
+
+    # summernote
+    url(r'^summernote/', include('django_summernote.urls')),
 ]
 
 # static

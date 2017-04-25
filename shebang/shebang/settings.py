@@ -45,7 +45,8 @@ INSTALLED_APPS = (
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'oneroom',
-    'account'
+    'account',
+    'django_summernote',
 )
 
 MIDDLEWARE_CLASSES = (
@@ -117,4 +118,9 @@ MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
 
 # for Form DateField
 DATA_INPUT_FORMATS = ('%Y/%m/%d', '%Y-%m-%d')
+
+
+
+# for summernote settings
+SUMMERNOTE_CONFIG = {}
 
