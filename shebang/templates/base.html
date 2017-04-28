@@ -2,11 +2,54 @@
 <html>
   
 <head>
+  <meta charset="utf-8" />  
+  <link rel="stylesheet" type="text/css" href="./css/base.css" />
+
   <title>{% block title %}{% endblock %}</title>
 </head>
   
-<body>
-  {% block content %}{% endblock %}
+<body>  
+
+  
+  <div class="header"> 
+    <h1 class="header-logo">
+      <a herf="/">
+        <span class="screen-reader-only">shebang</span>
+      </a>
+    </h1>
+
+    <div class="menu">
+      <ul class="ment-list">
+        <li class="menu-item"><a class="menu-item-link" href="/"> 북문 </a></li>
+        <li class="menu-item"><a class="menu-item-link" href="/"> 테크노문 </a></li>
+        <li class="menu-item"><a class="menu-item-link" href="/"> 동문 </a></li>
+        <li class="menu-item"><a class="menu-item-link menu-end" href="/"> 정문/쪽문 </a></li>
+        <li class="menu-item">
+          <a class="menu-item-link menu-sign" href="/"> 회원가입 </a>
+        </li>
+        <li class="menu-item">
+          <a class="menu-item-link menu-sign" href="/"> 로그인 </a>
+          </li>
+      </ul>
+
+    </div>
+
+  </div>
+
+
+
+
+  <div class="wrap">
+
+  </div>
+
+
+
+  <div class="footer">
+
+  </div>
+
+
 </body>
 
 </html>

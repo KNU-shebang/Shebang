@@ -1,0 +1,92 @@
+@charset "UTF-8";
+
+
+
+/* header 최상위 div */
+.header {
+  position:relative;
+  height:65px;
+  min-height:65px;
+  border-bottom:1px solid #000000;
+  background-color:#000000;
+}
+
+
+.header-logo {
+  float:left;
+  margin:0;
+}
+
+
+.header-logo>a {
+  display:inline-block;
+  width:180px;
+  height:65px;
+  min-height:28px;
+  background-image:url(../img/logo.png);
+  background-size: 138px 65px;
+  background-repeat:no-repeat;
+  margin-left:20px;
+}
+
+.menu {
+  float: right;
+  margin-right: 30px;
+}
+
+.menu-list {
+  clear: both;
+  display: table;
+}
+
+.menu-list>li {
+  float: left;
+  height: 60px;
+}
+
+.menu-item {
+  display: inline-block;
+  position: relative;
+}
+
+.menu-item-link {
+  text-decoration: none;
+  height: 60px;
+  padding: 0 3px;
+  margin: 0 30px;
+  color: #ffffff;
+  font-size: 18px;
+  line-height: 42px;
+  text-decoration: none;
+}
+
+.menu-end {
+    margin-right: 70px;
+}
+
+.menu-sign {
+  font-size: 13px;
+  margin: 0 10px;
+}
+
+
+
+
+
+
+/* wrap 최상위 div */
+.wrap {
+  overflow:hidden;
+  width:100%;
+  min-width:960px;
+}
+
+
+/* footer 최상위 div */
+.footer {
+  position:relative;
+  width:100%;
+  min-width:1024px;
+  clear:both;
+}
+
