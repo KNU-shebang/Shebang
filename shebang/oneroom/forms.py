@@ -3,6 +3,8 @@
 from django import forms
 from django.conf import settings
 
+from django_summernote.widgets import SummernoteWidget 
+
 from oneroom.choices import TYPE_OF_ROOM
 from oneroom.models import Room, Comment
 
@@ -10,9 +12,8 @@ from oneroom.models import Room, Comment
 
 class RoomForm(forms.ModelForm):
     title =forms.CharField(widget=forms.TextInput(attrs={'size':100}),
-            label='댓글 입력')
-    content = forms.CharField(widget=forms.Textarea(attrs={'row':30, 
-        'col':100}), label='내용')
+            label='제목')
+    content = forms.CharField(widget=SummernoteWidget(), label='내용')
     location = forms.CharField(widget=forms.TextInput(attrs={'size':120}),
             label='위치 정보')
     room_type = forms.ChoiceField(choices=TYPE_OF_ROOM, 
@@ -28,8 +29,8 @@ class RoomForm(forms.ModelForm):
 
     class Meta:
         model = Room
-        fields = ['title', 'content', 'location', 'room_type', 'rent',
-                'deposit', 'start_date', 'end_date']
+        fields = ['title', 'location', 'room_type', 'rent',
+                'deposit', 'start_date', 'end_date', 'content']
 
 
 class CommentNew(forms.ModelForm):

@@ -31,8 +31,8 @@ ALLOWED_HOSTS = []
 EMAIL_USE_TLS = True
 EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
 EMAIL_HOST = 'smtp.gmail.com'
-EMAIL_HOST_USER = '' 
-EMAIL_HOST_PASSWORD = ''
+EMAIL_HOST_USER = 'basicdatakr@gmail.com' 
+EMAIL_HOST_PASSWORD = 'kheom4031'
 EMAIL_PORT = 587
 
 # Application definition
@@ -45,7 +45,13 @@ INSTALLED_APPS = (
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'oneroom',
-    'account'
+    'account',
+<<<<<<< HEAD
+    'celery',
+    'redis'
+=======
+    'django_summernote',
+>>>>>>> 09da7416f543a4edb651035b613551414b391661
 )
 
 MIDDLEWARE_CLASSES = (
@@ -117,4 +123,18 @@ MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
 
 # for Form DateField
 DATA_INPUT_FORMATS = ('%Y/%m/%d', '%Y-%m-%d')
+
+<<<<<<< HEAD
+BROKER_URL = 'redis://localhost:6379'
+CELERY_RESULT_BACKEND = 'redis://localhost:6379'
+CELERY_ACCEPT_CONTENT = ['application/json']
+CELERY_TASK_SERIALIZER = 'json'
+CELERY_RESULT_SERIALIZER = 'json'
+CELERY_TIMEZONE = 'Asia/Seoul'
+=======
+
+
+# for summernote settings
+SUMMERNOTE_CONFIG = {}
+>>>>>>> 09da7416f543a4edb651035b613551414b391661
 
