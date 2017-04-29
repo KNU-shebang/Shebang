@@ -47,8 +47,12 @@ INSTALLED_APPS = (
     'oneroom',
     'account',
 <<<<<<< HEAD
+<<<<<<< HEAD
     'celery',
     'redis'
+=======
+    'django_summernote',
+>>>>>>> 09da7416f543a4edb651035b613551414b391661
 =======
     'django_summernote',
 >>>>>>> 09da7416f543a4edb651035b613551414b391661
@@ -125,6 +129,7 @@ MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
 DATA_INPUT_FORMATS = ('%Y/%m/%d', '%Y-%m-%d')
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 BROKER_URL = 'redis://localhost:6379'
 CELERY_RESULT_BACKEND = 'redis://localhost:6379'
 CELERY_ACCEPT_CONTENT = ['application/json']
@@ -132,9 +137,14 @@ CELERY_TASK_SERIALIZER = 'json'
 CELERY_RESULT_SERIALIZER = 'json'
 CELERY_TIMEZONE = 'Asia/Seoul'
 =======
+=======
+>>>>>>> 09da7416f543a4edb651035b613551414b391661
 
 
 # for summernote settings
 SUMMERNOTE_CONFIG = {}
+<<<<<<< HEAD
+>>>>>>> 09da7416f543a4edb651035b613551414b391661
+=======
 >>>>>>> 09da7416f543a4edb651035b613551414b391661
 
