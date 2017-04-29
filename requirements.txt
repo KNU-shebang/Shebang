@@ -1,9 +1,16 @@
+amqp==1.4.9
+anyjson==0.3.3
 appdirs==1.4.2
+billiard==3.3.0.23
+celery==3.1.18
 Django==1.9.7
 django-summernote==0.8.6
+kombu==3.0.37
 olefile==0.44
 packaging==16.8
 Pillow==4.0.0
 pyparsing==2.1.10
-selenium==3.3.3
+pytz==2017.2
+redis==2.10.5
 six==1.10.0
+vine==1.1.3
