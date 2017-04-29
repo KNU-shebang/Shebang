@@ -47,6 +47,8 @@ INSTALLED_APPS = (
     'oneroom',
     'account',
     'django_summernote',
+    'celery',
+    'redis'
 )
 
 MIDDLEWARE_CLASSES = (
