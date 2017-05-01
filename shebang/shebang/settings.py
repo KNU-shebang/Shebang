@@ -31,8 +31,8 @@ ALLOWED_HOSTS = []
 EMAIL_USE_TLS = True
 EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
 EMAIL_HOST = 'smtp.gmail.com'
-EMAIL_HOST_USER = 'basicdatakr@gmail.com' 
-EMAIL_HOST_PASSWORD = 'kheom4031'
+EMAIL_HOST_USER = '' 
+EMAIL_HOST_PASSWORD = ''
 EMAIL_PORT = 587
 
 # Application definition
@@ -47,8 +47,7 @@ INSTALLED_APPS = (
     'oneroom',
     'account',
     'django_summernote',
-    'celery',
-    'redis'
+    'djcelery',
 )
 
 MIDDLEWARE_CLASSES = (
@@ -122,8 +121,8 @@ MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
 DATA_INPUT_FORMATS = ('%Y/%m/%d', '%Y-%m-%d')
 
 
-BROKER_URL = 'redis://localhost:6379'
-CELERY_RESULT_BACKEND = 'redis://localhost:6379'
+BROKER_URL = 'amqp://guest:guest@localhost:5672//'
+# CELERY_RESULT_BACKEND = 'redis://localhost:6379'
 CELERY_ACCEPT_CONTENT = ['application/json']
 CELERY_TASK_SERIALIZER = 'json'
 CELERY_RESULT_SERIALIZER = 'json'
