@@ -3,6 +3,7 @@
 from django import forms
 from django.conf import settings
 from django.contrib.auth import get_user_model
+from django.contrib.auth.hashers import check_password
 from account.models import User
 
 class SignupForm(forms.ModelForm):
@@ -72,5 +73,22 @@ class SendEmailForm(forms.Form):
         return self.cleaned_data
 
 
+class ChangePasswordForm(forms.Form):
+    
+    password = forms.CharField(widget=forms.PasswordInput(render_value=True),
+      required=True, label='현재 비밀번호')
+    password1 = forms.CharField(widget=forms.PasswordInput(render_value=True),
+      required=True, label='새 비밀번호')
+    password2 = forms.CharField(widget=forms.PasswordInput(render_value=True),
+      required=True, label='새 비밀번호(재입력)')
+
+    def clean(self):
         
+        password1 = self.cleaned_data['password1']
+        password2 = self.cleaned_data['password2']
+        
+        if password1 != password2:
+            raise forms.ValidationError('동일한 비밀번호를 입력해주세요.')
+
+        return self.cleaned_data 
 

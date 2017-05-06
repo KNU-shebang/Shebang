@@ -1,0 +1,5 @@
+<form action="{% url 'account:change' %}" method="POST">
+  {% csrf_token %}
+  {{ form }}
+  <input type="submit" value="변경">
+</form>

@@ -2,10 +2,12 @@
 
 from django.shortcuts import render, redirect
 from django.core.mail import EmailMessage
+from django.contrib.auth.hashers import check_password 
+from django.contrib.auth.decorators import login_required
 import base64
 
 from account.models import User
-from account.forms import SignupForm, SendEmailForm
+from account.forms import SignupForm, SendEmailForm, ChangePasswordForm
 from .tasks import send_email_task
 
 
@@ -48,4 +50,22 @@ def resend_email(request):
         form = SendEmailForm()
 
     return render(request, 'account/resend.html', {'form': form})
-        
+
+@login_required
+def change_password(request):
+
+    user = User.objects.get(email=request.user.email)
+    if request.method == 'POST':
+        form = ChangePasswordForm(request.POST)
+        if form.is_valid():
+            if check_password(request.POST['password'], user.password): #현재 비밀번호 확인
+                print('Okay')
+                user.set_password(request.POST['password1'])  # 새로운 비밀번호 저장.
+                user.save()
+                return redirect('root')
+            else:
+                print('Fail to change password') # message로 에러 발생 시키기        
+    else:
+        form = ChangePasswordForm()
+    
+    return render(request, 'account/change.html', {'form': form})
