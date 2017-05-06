@@ -46,4 +46,31 @@ class SignupForm(forms.ModelForm):
 
         u.save()
 
-            
+
+class SendEmailForm(forms.Form):
+    
+    email = forms.EmailField(required=True, label='경북대학교 웹메일')
+    name = forms.CharField(max_length=30, required=True, label='이름')
+
+
+    def clean(self):
+        
+        email = self.cleaned_data['email']
+        name = self.cleaned_data['name']
+        
+
+        if not email.endswith('knu.ac.kr'):
+            raise forms.ValidationError('경북대학교 메일(@knu.ac.kr)이 아닙니다.')
+        
+        if not User.objects.filter(email=email).exists():
+            raise forms.ValidationError('가입된 메일이 아닙니다.')
+        
+        user = User.objects.get(email=email)
+        if user.name != name:
+            raise forms.ValidationError('회원가입시 입력한 이름과 다릅니다.')
+
+        return self.cleaned_data
+
+
+        
+
