@@ -1,4 +1,8 @@
+{% extends "base.html" %}
 
+{% block title %}비밀번호 변경{% endblock %}
+
+{% block content %}
 
 <form action="{% url 'account:signup' %}" method="POST">
   {% csrf_token %}
@@ -7,3 +11,5 @@
 </form>
 
 <button><a href="{% url 'account:resend'%}">이메일 재요청</a></button>
+
+{% endblock %}
