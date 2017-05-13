@@ -8,6 +8,8 @@ urlpatterns = [
     url(r'^resend/$', views.resend_email, name='resend'),
     # 로그인 
     url(r'^login/$', views.login, name='login'),
+    # 로그아웃
+    url(r'^logout/$', views.logout, name='logout'),
     # 비밀번호 변경
     url(r'^change/$', views.change_password, name='change'),
     # 회원 메일 인증
