@@ -2,12 +2,14 @@
 
 from django.shortcuts import render, redirect
 from django.core.mail import EmailMessage
+from django.contrib import messages
 from django.contrib.auth.hashers import check_password 
 from django.contrib.auth.decorators import login_required
+from django.contrib.auth import login as django_login, authenticate, logout as django_logout
 import base64
 
 from account.models import User
-from account.forms import SignupForm, SendEmailForm, ChangePasswordForm
+from account.forms import SignupForm, SendEmailForm, ChangePasswordForm, LoginForm
 from .tasks import send_email_task
 
 
@@ -50,6 +52,51 @@ def resend_email(request):
         form = SendEmailForm()
 
     return render(request, 'account/resend.html', {'form': form})
+
+def get_user(email):
+    
+    try:
+        return User.objects.get(email=email)
+
+    except User.DoesNotExists:
+        return None
+
+def login(request):
+    
+    if request.method == 'POST':
+        form = LoginForm(request.POST)
+
+        if form.is_valid():
+            user = authenticate(email=request.POST['email'], password=request.POST['password'])
+            existed_user = get_user(request.POST['email'])
+
+            if user is not None:
+                if user.is_active:
+                    django_login(request, user)
+                    messages.success(request, '로그인되었습니다.')
+                    return redirect('/')
+
+            elif user is None and existed_user is not None:
+                messages.error(request, '이메일 인증절차가 필요합니다.')
+
+            elif user is None and existed_user is None:
+                messages.error(request, '가입되지 않은 사용자입니다.')
+
+        else:
+            messages.error(request, '올바른 정보를 입력해주세요.')
+    
+    else:
+        form = LoginForm()
+
+    return render(request, 'account/login.html', { 'form': form })
+
+def logout(request):
+    
+    django_logout(request)
+    messages.success(request, '로그아웃 되었습니다.')
+
+    return redirect('/')
+                 
 
 @login_required
 def change_password(request):

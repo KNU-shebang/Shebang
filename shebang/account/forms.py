@@ -72,6 +72,14 @@ class SendEmailForm(forms.Form):
 
         return self.cleaned_data
 
+class LoginForm(forms.Form):
+    
+    email = forms.CharField(required=True, label='경북대학교 이메일')
+    password = forms.CharField(widget=forms.PasswordInput(render_value=True),
+      required=True, label='비밀번호')
+
+       
+
 
 class ChangePasswordForm(forms.Form):
     
