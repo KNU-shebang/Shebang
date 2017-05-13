@@ -37,10 +37,10 @@
         <li class="menu-item"><a class="menu-item-link" href="/"> 동문 </a></li>
         <li class="menu-item"><a class="menu-item-link menu-end" href="/"> 정문/쪽문 </a></li>
         <li class="menu-item">
-          <a class="menu-item-link menu-sign" href="/"> 회원가입 </a>
+          <a class="menu-item-link menu-sign" href="{% url 'account:signup' %}"> 회원가입 </a>
         </li>
         <li class="menu-item">
-          <a class="menu-item-link menu-sign" href="/"> 로그인 </a>
+          <a class="menu-item-link menu-sign" href="{% url 'account:login' %}"> 로그인 </a>
           </li>
       </ul>
 
