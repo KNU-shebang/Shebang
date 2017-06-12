@@ -4,7 +4,16 @@
 {% block content %}
   <form method="POST">
     {% csrf_token %}
-    {{ form.as_p }}
+    <div>
+      <label for="inputEmail3" >문 종류: </label>
+      <select name="gate">
+        
+          {% for gate in gates %}
+          <option value="{{ gate.id }}"{% if form.cleaned_data.gate == gate %} selected{% endif %}>{{ gate.name_kr }}</option>
+          {% endfor %}
+      </select>
+    </div>
+      {{ form.as_p }}
     <button type="submit">글 쓰기</button>
   </form>
 {% endblock %}

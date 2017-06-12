@@ -5,9 +5,17 @@ from account.models import User
 from oneroom.choices import TYPE_OF_ROOM
 
 
+class Gate(models.Model):
+    name_kr = models.CharField(max_length=50)
+    name_en = models.CharField(max_length=50)
+
+    def __str__(self):
+        return "{0}({1})".format(self.name_kr, self.name_en)
+
 class Room(models.Model):
     title = models.CharField(max_length=120)
     user = models.ForeignKey(User, on_delete=models.CASCADE) 
+    gate = models.ForeignKey(Gate, on_delete=models.CASCADE)
     content = models.TextField() # 추가정보
     created_date = models.DateTimeField(auto_now_add=True)
     updated_date = models.DateTimeField(auto_now=True)
@@ -31,4 +39,6 @@ class Comment(models.Model):
 
     def __str__(self):
         return self.room.title + " Comment, " + str(self.id)
+
+
 

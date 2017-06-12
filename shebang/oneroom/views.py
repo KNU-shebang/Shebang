@@ -1,8 +1,10 @@
 from django.shortcuts import render, redirect, get_object_or_404
 from django.views.generic import ListView, DetailView
 
-from oneroom.models import Room
+from oneroom.models import Room, Gate
 from oneroom.forms import RoomForm, CommentNew
+from account.models import User
+
 
 
 class IndexView(ListView):
@@ -10,6 +12,11 @@ class IndexView(ListView):
     template_name = 'oneroom/index.html'
     model = Room
 
+def board(request, gate_name):
+    
+    rooms = Room.objects.filter(gate__name_en=gate_name)
+    return render(request, 'oneroom/board.html', {'gate_name': gate_name,
+                                                    'rooms': rooms })
 
 class RoomDetailView(DetailView):
     """Room 상세 페이지"""
@@ -23,16 +30,33 @@ class RoomDetailView(DetailView):
 
 def room_new(request):
     """Room 생성"""
+
+    gates = Gate.objects.all()
     if request.method == 'POST':
+        print(request.user)
         form = RoomForm(request.POST)
         if form.is_valid():
-            room = form.save(commit=False)
-            room.save()
+            print(form)
+            gate = Gate.objects.get(id=request.POST['gate'])
+            room = Room.objects.create(title=request.POST['title'],
+                        user=request.user,
+                        gate=gate,
+                        content=request.POST['content'],
+                        location=request.POST['location'],
+                        room_type=request.POST['room_type'],
+                        rent=request.POST['rent'],
+                        deposit=request.POST['deposit'],
+                        start_date=request.POST['start_date'],
+                        end_date=request.POST['end_date'])
+            
+            
             return redirect('oneroom:room', pk=room.pk)
 
     else:
         form = RoomForm()
-    return render(request, 'oneroom/room_new.html', {'form': form})
+        
+    return render(request, 'oneroom/room_new.html', {'form': form, 
+                                                    'gates': gates })
 
 
 def room_edit(request, pk):

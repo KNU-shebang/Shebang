@@ -37,9 +37,21 @@ class CustomUserManager(BaseUserManager):
         return self._create_user(email, password, name, False, False,
                 False, **extra_fields)
 
-    def create_superuser(self, email, name, password, **extra_fields):
-        return self._create_user(email, name, password, True, True, 
-                True, **extra_fields)
+    def create_superuser(self, email, password, **extra_fields):
+        now = timezone.now()
+        if not email:
+            raise ValueError(u'잘못된 이메일 참조')
+        email = self.normalize_email(email)
+        user = self.model(email=email,
+                name='운영자',
+                is_staff=True,
+                is_active=True,
+                is_superuser=True,
+                last_login=now,
+                date_joined=now, **extra_fields)
+        user.set_password(password)
+        user.save()
+        return user
 
 
 class User(AbstractBaseUser, PermissionsMixin):

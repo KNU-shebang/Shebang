@@ -4,7 +4,8 @@ from oneroom import views
 urlpatterns = [
     # oneroom index 
     url(r'^$', views.IndexView.as_view(), name='index'),
-    
+    # 게시판
+    url(r'^board/(?P<gate_name>\w+)/$', views.board, name='board'),
     # 방 상세 페이지
     url(r'^room/(?P<pk>\d+)/$', views.RoomDetailView.as_view(),
         name='room'),

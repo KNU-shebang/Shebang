@@ -3,9 +3,14 @@
 {% block title %}Shebang{% endblock %}
 
 
-{% block content %} 
+{% block content %}
+   
+    
+
   <div class="main-search">
-    <div class="main-search-img"></div>
+    <div class="main-search-img">
+      <div id="map" style="height: 100%; width: 100%;"></div>
+    </div>
         
     <div class="main-search-bottom">
       <div class="search-wrap">
@@ -95,5 +100,46 @@
 
     </div>
 </div>
+<script>
+      var kyungjin = {lat: 35.8916304, lng: 128.616626}
+      var eastGate = {lat: 35.892222, lng: 128.615859}
+      var bokhyun = {lat: 35.8917103, lng: 128.6161497}
+      var enha = {lat: 35.8897567, lng: 128.6173157}
+      var labels = ['1', '2', '3', '4', '5', '6', '7', '8', '9', '10'];
+      var labelIndex = 0;
+      function initMap() {
+        var knu = {lat: 35.8896931, lng: 128.6097433};
+        var map = new google.maps.Map(document.getElementById('map'), {
+          zoom: 15,
+          center: knu
+        });
+        // var marker = new google.maps.Marker({
+        //   position: knu,
+        //   map: map
+        // });
+
+        addMarker(kyungjin, map);
+        addMarker(eastGate, map);
+        addMarker(bokhyun, map);
+        addMarker(enha, map);
+        
+      }
+     
+      
+    //   addMarker(eastGate, map);
+      function addMarker(location, map) {
+          var marker = new google.maps.Marker({
+              position: location,
+              label: labels[labelIndex++ % labels.length],
+              map: map
+          });
+
+
+      };
+      
+    </script>
+    <script async defer
+    src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBUi9SQiqtsaQcAqrtPaZHc38f-OIX7z-s&callback=initMap">
+    </script>
 {% endblock %}
 
